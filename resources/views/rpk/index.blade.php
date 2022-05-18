@@ -10,19 +10,19 @@
             <i class="bx bx-message-rounded-add"></i>
         </button>
         <thead>
-                                <th>ID</th>
-                                <th>Unit Kerja</th>
-                                <th>Kode IK</th>
-                                <th style="width: 400px">Indikator Kinerja</th>
-                                <th>Kode Program</th>
-                                <th>Program</th>
-                                <th>Rincian Program</th>
-                                <th style="width: 300px">Nama Kegiatan</th>
-                                <th>TOR/KAK/ProposalProject</th>
-                                <th>Kebutuhan Kegiatan</th>
-                                <th>Rencana Jadwal Pelaksanaan</th>
-                                <th>Tahun</th>
-                                <th>Aksi</th>
+            <th>ID</th>
+            <th>Unit Kerja</th>
+            <th>Kode IK</th>
+            <th style="position: relative;">Indikator Kinerja</th>
+            <th>Kode Program</th>
+            <th>Program</th>
+            <th>Rincian Program</th>
+            <th>Nama Kegiatan</th>
+            <th>TOR/KAK/ProposalProject</th>
+            <th>Kebutuhan Kegiatan</th>
+            <th>Rencana Jadwal Pelaksanaan</th>
+            <th>Tahun</th>
+            <th>Aksi</th>
         </thead>
         <tbody>
              @foreach($RPK as $dataRPK)
@@ -120,7 +120,7 @@
                             <td >{{ $dataRPK->id }}</td>
                             <td></td>
                             <td>
-                                
+
                                 <select name="kode_ik" type="text" id="kode_ik" class="kode_ik d-inline form-control w-auto required">
                                 <option value="SILAHKAN PILIH" selected="true">SILAHKAN PILIH</option>
                                 @foreach($KK as $dataKK)
