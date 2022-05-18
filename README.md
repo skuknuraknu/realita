@@ -18,3 +18,11 @@ php artisan migrate
 php artisan db:seed UserSeeder
 php artisan serve
 ```
+
+## Login
+
+| username            | password |
+| -----------------   | ---------|
+| admin    | password |
+| operator | password |
+
