@@ -9,8 +9,12 @@ cp .env-example .env
 php artisan key:generate
 ```
 2. Create database baru di phpmyadmin
-3. Ganti database di .env
-4. Jalankan server:
+3. Masukkan database di .env
+`DB_DATABASE=`
+
+4. Masukkan command berikut:
 ```bash
+php artisan migrate
+php artisan db:seed UserSeeder
 php artisan serve
 ```
