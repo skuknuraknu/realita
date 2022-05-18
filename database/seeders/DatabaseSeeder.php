@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      Ss::factory()->count(3)->has(
-            Ik::factory()->count(20)->kodeIk()->has(
-                Program::factory()->count(3)->kodeProg()
-            )
-        )->create();
+    //   Ss::factory()->count(3)->has(
+    //         Ik::factory()->count(20)->kodeIk()->has(
+    //             Program::factory()->count(3)->kodeProg()
+    //         )
+    //     )->create();
     }
 }

@@ -3,28 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Models\UnitKerja;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UnitKerjaController extends Controller
 {
-      public function index()
+    public function index()
     {
-        $UNITKERJA = UnitKerja::get();
-        return view('UnitKerja.index',compact('UNITKERJA'));
+        $roles = Role::all();
+        $users =User::with('roles')->get();
+        return view('UnitKerja.index', compact('users', 'roles'));
     }
     public function del(Request $x)
     {
-        UnitKerja::where('id', $x->id)->delete();
+        $user = User::where('id', $x->id)->first();
+        $user->roles()->detach();
+        $user->delete();
         return response()->json([$x->id]);
     }
+
     public function add(Request $x)
     {
         $req = [
-            'unit_kerja' => $x->unitkerja,
-            'nama_pengguna' => $x->nama,
-            'level_pengguna' => $x->level,
-            ];
-        UnitKerja::UpdateOrCreate(["id" => $x->id],$req);
+            'username' => $x->username,
+            'unit_kerja' => $x->unit_kerja,
+            'password' => $x->password ?? bcrypt('password')
+        ];
+        $user = User::UpdateOrCreate(["id" => $x->id], $req);
+        $user->syncRoles($x->role);
         return response()->json(['SUKSES']);
     }
 }

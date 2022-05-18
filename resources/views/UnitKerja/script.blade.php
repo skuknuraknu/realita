@@ -6,6 +6,13 @@
                     let row = $(this).closest('tr').clone();
                     $.each(row.find('td'), function(i1, v1){
                         $(this).html('')
+                        if($(this).is(':nth-child(4)')){
+                            $(this).html(`<select name="role" type="text" id="role" class="role d-inline form-control w-auto required">
+                                @foreach($roles as $role)
+                                    <option value="{{$role->id}}">{{$role->name}}</option>
+                                @endforeach
+                                </select>`)
+                        }
                         if ($(this).is(':last-child')) {
                             $(this).html("<span class='badge btn btn-danger del_btn'>Delete</span>  <span class='badge btn btn-success save_btn'>Save</span> <span class='badge btn btn-info new_btn'>Add row</span")
                         }
@@ -21,9 +28,9 @@
                  $(document).on('click', ".save_btn",function(e){
                    let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
                    let id = setiapBaris[0]
-                   let unitkerja = setiapBaris[1]
-                   let nama = setiapBaris[2]
-                   let level = setiapBaris[3]
+                   let username = setiapBaris[1]
+                   let unit_kerja = setiapBaris[2]
+                   let role = $(this).closest('tr').find('select').val()
 
                       $.ajax({
                            type:'POST',
@@ -31,11 +38,12 @@
                            data:{
                              "_token": "{{ csrf_token() }}",
                             id,
-                            unitkerja,
-                            nama,
-                            level
+                            username,
+                            unit_kerja,
+                            role,
                             },
                            success:function(data){
+                               console.log(data)
                              Swal.fire({
                                   title: 'DATA SUKSES TERSIMPAN',
                                   confirmButtonText: 'OK',
