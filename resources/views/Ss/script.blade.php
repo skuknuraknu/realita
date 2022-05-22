@@ -12,7 +12,7 @@
 
                     $(this).closest('tr').after(row);
                     // console.log(row[0].innerText);
-                    // console.log($(this).closest('tr').after(row)[0].innerText.split("\t").slice(0, -1));
+                        // console.log($(this).closest('tr').after(row)[0].innerText.split("\t").slice(0, -1));
                     // console.log(row);
                 })
 
@@ -34,7 +34,7 @@
                             },
                            success:function(data){
                              Swal.fire(
-                                  'Tambah Data Sukses!'
+                                  'Berhasil Menyimpan Data!'
                                 )
                              location.reload()
                            }

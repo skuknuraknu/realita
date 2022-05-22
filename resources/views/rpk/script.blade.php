@@ -112,6 +112,9 @@ tes = $(this).closest('tr').find('.kode_prog')
                        if($(this).is(':nth-child(3)')){
                               $(this).html('<select name="kode_ik" type="text" id="kode_ik" class="kode_ik d-inline form-control w-auto required"> <option value="SILAHKAN PILIH"  selected="true">SILAHKAN PILIH</option> @foreach($KK as $dataKK) <option value="{{$dataKK->kode_ik}}">{{$dataKK->kode_ik}}</option>  @endforeach </select>')
                         }
+                        if($(this).is(':nth-child(4)')){
+                              $(this).html('<div style="width:300px" class="indikator_kinerja"></div>')
+                        }
                         if($(this).is(':nth-child(5)')){
                             $(this).html('<select name="kode_prog" class="kode_prog form-control d-inline w-auto required" id="">  <option value="SILAHKAN PILIH" >SILAHKAN PILIH</option></select>')
                         }

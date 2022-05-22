@@ -55,7 +55,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    @include('kk.script')
-@endpush

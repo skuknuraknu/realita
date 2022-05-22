@@ -7,7 +7,6 @@ class Kk extends Model
     use HasFactory;
     protected $table = 'tb_kk';
     protected $fillable= [
-           'satuan',
            'tw_1',
            'tw_2',
            'tw_3',

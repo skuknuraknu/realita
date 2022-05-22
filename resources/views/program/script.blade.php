@@ -1,12 +1,31 @@
-        <script>
-            $(document).ready(function($){
-                //add
+<script>
+        $(document).ready(function($){
+         //ONCHANGE SELECT IK
+                $(document).on('change', ".kode_ik",function(e){
+                    let kode_ik = $(this).closest('tr').find('select').val()
+                    let indikator = $(this).closest('tr').find('td.indikator_kinerja')
+                    $.ajax({
+                           type:'GET',
+                           url:"{{ route('rpk.get') }}",
+                           data:{
+                             "_token": "{{ csrf_token() }}",
+                            kode_ik:kode_ik,
+                            },
+                           success:function(data){
+                            console.log(data)
+                                indikator.text(data[1][0].indikator_kinerja)
+                           
+                           }
+                        });
+                 })
+
+            //add
                 $(document).on('click', ".new_btn",function(e){
                     let row = $(this).closest('tr').clone();
                     $.each(row.find('td'), function(i1, v1){
                         $(this).html('')
                         if($(this).is(':nth-child(2)')){
-                            $(this).html("<select name='kode_ik' type='text' id='kode_ik' class='d-inline form-control w-auto required'>  @foreach($IK as $dataIK) @if($dataIK->kode_ik === $dataProgram->kode_ik) <option value='{{$dataIK->kode_ik}}' selected='true'>{{$dataIK->kode_ik}}</option> @else <option value='{{$dataIK->kode_ik}}' >{{$dataIK->kode_ik}}</option> @endif @endforeach </select>")
+                            $(this).html("<select name='kode_ik' type='text' id='kode_ik' class='kode_ik d-inline form-control w-auto required'>  @foreach($IK as $dataIK) @if($dataIK->kode_ik === $dataProgram->kode_ik) <option value='{{$dataIK->kode_ik}}' selected='true'>{{$dataIK->kode_ik}}</option> @else <option value='{{$dataIK->kode_ik}}' >{{$dataIK->kode_ik}}</option> @endif @endforeach </select>")
                         }
                         if ($(this).is(':last-child')) {
                             $(this).html(' <span class="del_btn"><i role="button" class="rounded bg-danger py-3 px-2 fa-solid fa-trash fa-sm"></i></span> <span class="save_btn"><i role="button" class="rounded bg-info py-3 px-2 fa-solid fa-floppy-disk fa-sm"></i></span> <span class="new_btn"><i role="button" class="rounded bg-success py-3 px-2 fa-solid fa-plus fa-sm"></i></span>')
@@ -24,8 +43,8 @@
                    let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
                    let id = setiapBaris[0]
                    let kode_ik = $(this).closest('tr').find('select').val()
-                   let kode_prog = setiapBaris[2]
-                   let program = setiapBaris[3]
+                   let kode_prog = setiapBaris[3]
+                   let program = setiapBaris[4]
 
                       $.ajax({
                            type:'POST',

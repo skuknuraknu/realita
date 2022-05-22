@@ -1,13 +1,31 @@
         <script>
             $(document).ready(function($){
+               //ONCHANGE SELECT IK
+               $(document).on('change', ".kode_ik",function(e){
+                    let kode_ik = $(this).closest('tr').find('select').val()
+                    let indikator = $(this).closest('tr').find('td.indikator_kinerja')
+                    $.ajax({
+                           type:'GET',
+                           url:"{{ route('rpk.get') }}",
+                           data:{
+                             "_token": "{{ csrf_token() }}",
+                            kode_ik:kode_ik,
+                            },
+                           success:function(data){
+                            console.log(data)
+                                indikator.text(data[1][0].indikator_kinerja)
+                           
+                           }
+                        });
+                 })
+
                 //add
                 $(document).on('click', ".new_btn",function(e){
-
                     let row = $(this).closest('tr').clone();
                     $.each(row.find('td'), function(i1, v1){
                         $(this).html('')
                         if($(this).is(':nth-child(2)')){
-                              $(this).html("<select name='kode_ik' type='text' id='kode_ik' class='d-inline form-control w-auto required'><?php foreach($dataIK as $ora){ ?><option value='<?php echo $ora->kode_ik?>'><?php echo $ora->kode_ik; ?></option> <?php }?></select>")
+                              $(this).html("<select name='kode_ik' type='text' id='kode_ik' class='kode_ik d-inline form-control w-auto required'><?php foreach($dataIK as $ora){ ?><option value='<?php echo $ora->kode_ik?>'><?php echo $ora->kode_ik; ?></option> <?php }?></select>")
                         }
                         if ($(this).is(':last-child')) {
                             $(this).html("<span class='badge btn btn-danger del_btn'>Delete</span>  <span class='badge btn btn-success save_btn'>Save</span> <span class='badge btn btn-info new_btn'>Add row</span")
@@ -25,8 +43,9 @@
                    let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
                    let id = setiapBaris[0]
                    let kode_ik = $(this).closest('tr').find('select').val()
-                   let pk_menteri = setiapBaris[2]
-                   let bobot = setiapBaris[3]
+                   let pk_menteri = setiapBaris[3]
+                   let satuan = setiapBaris[4]
+                   let bobot = setiapBaris[5]
 
                       $.ajax({
                            type:'POST',
@@ -34,9 +53,10 @@
                            data:{
                              "_token": "{{ csrf_token() }}",
                              id:id,
-                            kode_ik:kode_ik,
-                            pk_menteri:pk_menteri,
-                            bobot:bobot
+                            kode_ik,
+                            pk_menteri,
+                            satuan,
+                            bobot
                             },
                            success:function(data){
                             Swal.fire({

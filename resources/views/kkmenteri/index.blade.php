@@ -11,6 +11,7 @@
             <th>Kode IK</th>
             <th>Indikator Kinerja</th>
             <th>PK Mentri</th>
+            <th>Satuan</th>
             <th>Bobot</th>
             <th>Aksi</th>
         </thead>
@@ -19,7 +20,7 @@
                         <tr>
                             <td >{{ $x->id }}</td>
                             <td style="width: 120px;">
-                                <select name="kode_ik" type="text" id="kode_ik" class="d-inline form-control w-auto required">
+                                <select name="kode_ik" type="text" id="kode_ik" class="kode_ik d-inline form-control w-auto required">
                                 @foreach($dataIK as $ora)
                                     @if($ora->kode_ik === $x->kode_ik)
                                         <option value="{{$ora->kode_ik}}" selected="true">{{$ora->kode_ik}}</option>
@@ -28,9 +29,10 @@
                                     @endif
                                 @endforeach
                                 </select>
-                            <td class="indikator_kinerja"></td>
-                            <td style="width: 100px;" contenteditable="true">{{ $x->pk_menteri}}</td>
-                            <td style="width: 100px;" contenteditable="true">{{ $x->bobot}}</td>
+                            <td style="width: 480px" class="indikator_kinerja">{{ $x->indikator_kinerja}}</td>
+                            <td style="width: 75px;" contenteditable="true">{{ $x->pk_menteri}}</td>
+                            <td style="width: 60px; text-align:center" contenteditable="true">{{ $x->satuan}}</td>
+                            <td style="width: 75px;" contenteditable="true">{{ $x->bobot}}</td>
 
                             <td style="width: 150px;">
                                 <span class="del_btn"><i role="button" class="rounded bg-danger py-3 px-2 fa-solid fa-trash fa-sm"></i></span>

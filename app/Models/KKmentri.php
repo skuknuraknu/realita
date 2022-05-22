@@ -13,6 +13,7 @@ class KKmentri extends Model
     protected $fillable= [
            'kode_ik',
            'pk_menteri',
+           'satuan',
            'bobot',
     ];
 }

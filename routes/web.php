@@ -12,7 +12,7 @@ use App\Http\Controllers\KKmentriController;
 use App\Http\Controllers\RabController;
 use App\Http\Controllers\UnitKerjaController;
 use App\Http\Controllers\RangkaController;
-
+use App\Http\Controllers\Report\PerkinController;
 use App\Models\Ss;
 
 /*
@@ -97,6 +97,8 @@ Route::group(['middleware' => 'auth'], function ()
     Route::post('/verification-perkin', [DataVerification::class, 'updateVerificationPerkin'])->name('verification.perkin_update');
     Route::get('/verification-rekat', [DataVerification::class, 'verificationRekat'])->name('verification.rekat');
     Route::post('/verification-rekat', [DataVerification::class, 'updateVerificationRekat'])->name('verification.rekat_update');
+
+    Route::get('/reports/perkin', [PerkinController::class, 'index'])->name('reports.perkin');
 });
 
 
