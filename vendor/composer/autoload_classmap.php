@@ -6190,6 +6190,7 @@ return array(
     'ZipStream\\Option\\Version' => $vendorDir . '/maennchen/zipstream-php/src/Option/Version.php',
     'ZipStream\\Stream' => $vendorDir . '/maennchen/zipstream-php/src/Stream.php',
     'ZipStream\\ZipStream' => $vendorDir . '/maennchen/zipstream-php/src/ZipStream.php',
+    'h4cc\\WKHTMLToPDF\\WKHTMLToPDF' => $vendorDir . '/h4cc/wkhtmltopdf-amd64/WKHTMLToPDF.php',
     'phpDocumentor\\Reflection\\DocBlock' => $vendorDir . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
     'phpDocumentor\\Reflection\\DocBlockFactory' => $vendorDir . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
     'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => $vendorDir . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',

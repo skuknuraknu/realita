@@ -26,7 +26,7 @@ class PerkinController extends Controller
             ->get();
         $dataPerkin = $dataPerkin->groupBy('ss_id');
         
-        $pdf = Pdf::loadview('reports.pdf.perkin',compact('dataPerkin'));
+        $pdf = PDF::loadView('reports.pdf.perkin',compact('dataPerkin'));
         return $pdf->setOrientation('landscape')->stream('perkin.pdf');
     }
 }
