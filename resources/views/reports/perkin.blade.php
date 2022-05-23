@@ -8,9 +8,9 @@
             <table id="kk">
 
                 <!-- Button trigger modal -->
-                <a href="{{ route('kk.show') }}" class="ml-5 mb-2 btn btn-danger text-white" type="button"
+                <a href="{{ route('reports.perkin.cetak_pdf') }}" class="mb-2 btn btn-success text-white" type="button"
                     class="btn btn-light">
-                    <i class="bx bx-message-rounded-edit"></i>
+                    <i class="bx bx-printer"></i>
                 </a>
                 <thead>
                     <th>ID</th>
@@ -23,31 +23,22 @@
                     <th>TW 3</th>
                     <th>TW 4</th>
                     <th>Bobot</th>
-                    <th>Aksi</th>
                 </thead>
                 <tbody>
-                    @foreach ($data as $dataKK)
+                    @foreach ($dataPerkin as $data)
                         <tr>
-                            <td>{{ $dataKK->id }}</td>
+                            <td>{{ $data->id }}</td>
                             <td></td>
                             <td>
-                                {{ $dataKK->kode_ik }}
+                                {{ $data->kode_ik }}
                             </td>
-                            <td contenteditable="false" style="width: 100px">{{ $dataKK->pk_menteri }}</td>
-                            <td style="width: 100pdataKK" contenteditable="true">{{ $dataKK->satuan }}</td>
-                            <td contenteditable="true">{{ $dataKK->tw_1 }}</td>
-                            <td contenteditable="true">{{ $dataKK->tw_2 }}</td>
-                            <td contenteditable="true">{{ $dataKK->tw_3 }}</td>
-                            <td contenteditable="true">{{ $dataKK->tw_4 }}</td>
-                            <td contenteditable="false">{{ $dataKK->bobot }}</td>
-
-                            <td>
-                                <span class="del_btn"><i role="button"
-                                        class="rounded bg-danger p-3 fa-solid fa-trash fa-sm"></i></span>
-                                <span class="save_btn"><i role="button"
-                                        class="rounded bg-info p-3 fa-solid fa-floppy-disk fa-sm"></i></span>
-
-                            </td>
+                            <td contenteditable="false" style="width: 100px">{{ $data->pk_menteri }}</td>
+                            <td style="width: 100pdata" contenteditable="true">{{ $data->satuan }}</td>
+                            <td contenteditable="true">{{ $data->tw_1 }}</td>
+                            <td contenteditable="true">{{ $data->tw_2 }}</td>
+                            <td contenteditable="true">{{ $data->tw_3 }}</td>
+                            <td contenteditable="true">{{ $data->tw_4 }}</td>
+                            <td contenteditable="false">{{ $data->bobot }}</td>
                         </tr>
                     @endforeach
                 </tbody>

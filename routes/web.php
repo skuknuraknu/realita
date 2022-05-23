@@ -99,6 +99,8 @@ Route::group(['middleware' => 'auth'], function ()
     Route::post('/verification-rekat', [DataVerification::class, 'updateVerificationRekat'])->name('verification.rekat_update');
 
     Route::get('/reports/perkin', [PerkinController::class, 'index'])->name('reports.perkin');
+    Route::get('/reports/perkin/cetak-pdf', [PerkinController::class, 'cetakPdf'])->name('reports.perkin.cetak_pdf');
+
 });
 
 

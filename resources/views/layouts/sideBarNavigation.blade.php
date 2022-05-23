@@ -86,7 +86,7 @@
             </div>
             <div class="menu-title">LALITA</div>
         </a>
-        <a href="{{ route('kk.index') }}">
+        <a href="{{ route('reports.perkin') }}">
             <div class="parent-icon"><i class='bx bx-grid'></i>
             </div>
             <div class="menu-title">PERKIN</div>

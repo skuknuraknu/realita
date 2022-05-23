@@ -2,20 +2,31 @@
 
 namespace App\Http\Controllers\Report;
 
+use PDF;
 use App\Http\Controllers\Controller;
-use App\Models\Ik;
 use App\Models\Kk;
-use Illuminate\Http\Request;
 
 class PerkinController extends Controller
 {
     public function index()
     {
         $dataPerkin = Kk::select('tb_kk.*', 'tb_ik.*', 'tb_ss.sasaran')
-                        ->join('tb_ik', 'tb_kk.kode_ik', '=', 'tb_ik.kode_ik')
-                        ->join('tb_ss', 'tb_ik.ss_id', '=', 'tb_ss.kode_ss')
-                        ->get();
+            ->join('tb_ik', 'tb_kk.kode_ik', '=', 'tb_ik.kode_ik')
+            ->join('tb_ss', 'tb_ik.ss_id', '=', 'tb_ss.kode_ss')
+            ->get();
 
         return view('reports.perkin', compact('dataPerkin'));
+    }
+
+    public function cetakPdf()
+    {
+        $dataPerkin = Kk::select('tb_kk.*', 'tb_ik.*', 'tb_ss.sasaran')
+            ->join('tb_ik', 'tb_kk.kode_ik', '=', 'tb_ik.kode_ik')
+            ->join('tb_ss', 'tb_ik.ss_id', '=', 'tb_ss.kode_ss')
+            ->get();
+        $dataPerkin = $dataPerkin->groupBy('ss_id');
+        
+        $pdf = Pdf::loadview('reports.pdf.perkin',compact('dataPerkin'));
+        return $pdf->setOrientation('landscape')->stream('perkin.pdf');
     }
 }
