@@ -1,1 +1,0 @@
-tes.blade.php

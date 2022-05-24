@@ -5,11 +5,14 @@
 <h3>Form KK Menteri</h3>
 <div class="outer-wrapper">
     <div class="table-wrapper">
-    <table>
+        <button id="addRow" class="mb-2 bg-warning btn text-white" type="button">
+            <i class="bx bx-message-rounded-add"></i>
+        </button>
+    <table id="kkmenteriTable">
         <thead>
             <th>ID</th>
             <th>Kode IK</th>
-            <th>Indikator Kinerja</th>
+            <th style="width:400px">Indikator Kinerja</th>
             <th>PK Mentri</th>
             <th>Satuan</th>
             <th>Bobot</th>

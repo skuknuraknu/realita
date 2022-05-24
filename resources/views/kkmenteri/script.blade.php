@@ -19,6 +19,11 @@
                         });
                  })
 
+                $(document).on('click', "#addRow", function(e){
+                 console.log('tes')
+                  $('#kkmenteriTable').append("<tr> <td></td> <td><select name='kode_ik' type='text' id='kode_ik' class='kode_ik d-inline form-control w-auto required'><?php foreach($dataIK as $ora){ ?><option value='<?php echo $ora->kode_ik?>'><?php echo $ora->kode_ik; ?></option> <?php }?></select></td> <td contenteditable='true' class='indikator_kinerja'></td> <td contenteditable='true' ></td> <td contenteditable='true' ></td> <td contenteditable='true' ></td> <td><span class='del_btn'><i role='button' class='rounded bg-danger py-3 px-2 fa-solid fa-trash fa-sm'></i></span> <span class='save_btn'><i role='button' class='rounded bg-info py-3 px-2 fa-solid fa-floppy-disk fa-sm'></i></span> <span class='new_btn'><i role='button' class='rounded bg-success py-3 px-2 fa-solid fa-plus fa-sm'></i></span></td> </tr>")
+                })
+
                 //add
                 $(document).on('click', ".new_btn",function(e){
                     let row = $(this).closest('tr').clone();
@@ -28,14 +33,10 @@
                               $(this).html("<select name='kode_ik' type='text' id='kode_ik' class='kode_ik d-inline form-control w-auto required'><?php foreach($dataIK as $ora){ ?><option value='<?php echo $ora->kode_ik?>'><?php echo $ora->kode_ik; ?></option> <?php }?></select>")
                         }
                         if ($(this).is(':last-child')) {
-                            $(this).html("<span class='badge btn btn-danger del_btn'>Delete</span>  <span class='badge btn btn-success save_btn'>Save</span> <span class='badge btn btn-info new_btn'>Add row</span")
+                            $(this).html('<span class="del_btn"><i role="button" class="rounded bg-danger py-3 px-2 fa-solid fa-trash fa-sm"></i></span> <span class="save_btn"><i role="button" class="rounded bg-info py-3 px-2 fa-solid fa-floppy-disk fa-sm"></i></span> <span class="new_btn"><i role="button" class="rounded bg-success py-3 px-2 fa-solid fa-plus fa-sm"></i></span>')             
                         }
                     })
-
                     $(this).closest('tr').after(row);
-                    // console.log(row[0].innerText);
-                    // console.log($(this).closest('tr').after(row)[0].innerText.split("\t").slice(0, -1));
-                    // console.log(row);
                 })
 
                 //save

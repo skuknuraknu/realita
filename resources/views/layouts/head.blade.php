@@ -39,6 +39,7 @@
 
 {{-- custom css --}}
 <style>
+    
 table tr{
   color: white;
 }
@@ -79,7 +80,7 @@ h1 {
     border-radius: 4px;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.9);
     max-width: fit-content;
-    max-height: fit-content;
+    max-height: fit-content; 
 }
 .table-wrapper {
     overflow-y: scroll;
@@ -88,7 +89,7 @@ h1 {
     max-height: 66.4vh;
     margin-top: 22px;
     margin: 15px;
-    padding-bottom: 20px;
+    padding-bottom:340px;
 }
 table {
     min-width: max-content;

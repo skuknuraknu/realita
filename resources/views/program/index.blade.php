@@ -32,7 +32,7 @@
                                     </select>
                                 </td>
                                 <td class="indikator_kinerja" style="width: 400px">{{ $dataProgram->indikator_kinerja }}</td>
-                                <td contenteditable="true">{{ $dataProgram->kode_prog}}</td>
+                                <td contenteditable="true" style="width:125px;"">{{ $dataProgram->kode_prog}}</td>
                                 <td contenteditable="true" style="width:400px">{{ $dataProgram->program}}</td>
                                 <td style="width: 140px;">
                                     <span class="del_btn"><i role="button" class="rounded bg-danger py-3 px-2 fa-solid fa-trash fa-sm"></i></span>
