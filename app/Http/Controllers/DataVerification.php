@@ -33,6 +33,7 @@ class DataVerification extends Controller
         rpk.Kebutuhan_Kegiatan,
         rpk.verifikasi_spi,
         rpk.verifikasi_sarpras,
+        rpk.verifikasi_kegiatan,
         rangka.akun,
         rangka.jenis_belanja,
         rab.kuantitas,

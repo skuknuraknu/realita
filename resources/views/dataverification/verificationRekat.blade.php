@@ -28,6 +28,7 @@
                                 <th>Harga Satuan</th>
                                 <th>Verifikasi SPI</th>
                                 <th>Verifikasi Sarpras</th>
+                                <th>Verifikasi Kegiatan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,7 +56,7 @@
                                             <option value="" disabled selected>--Setuju/Tolak--</option>
                                             @foreach ($options as $key => $value)
                                                 <option value="{{ $key }}"
-                                                    @if ($key == $rpk->verifikasi_spi) )
+                                                    @if ($key == $rpk->verifikasi_spi) 
                                             selected="selected" @endif>
                                                     {{ $value }}</option>
                                             @endforeach
@@ -67,7 +68,20 @@
                                             <option value="" disabled selected>--Setuju/Tolak--</option>
                                             @foreach ($options as $key => $value)
                                                 <option value="{{ $key }}"
-                                                    @if ($key == $rpk->verifikasi_sarpras) )
+                                                    @if ($key == $rpk->verifikasi_sarpras) 
+                                            selected="selected" @endif>
+                                                    {{ $value }}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="verifikasi_kegiatan"
+                                            class="verifikasi_kegiatan d-inline form-control w-auto required verifikasi">
+                                            <option value="" disabled selected>--Setuju/Tolak--</option>
+                                            @foreach ($options as $key => $value)
+                                                <option value="{{ $key }}"
+                                                
+                                                    @if ($key == $rpk->verifikasi_kegiatan)
                                             selected="selected" @endif>
                                                     {{ $value }}</option>
                                             @endforeach
@@ -122,6 +136,32 @@
                     "_token": "{{ csrf_token() }}",
                     id: id,
                     verifikasi_sarpras: verifikasi_sarpras
+                },
+                success: function(data) {
+                    console.log(data);
+                    Swal.fire({
+                        title: 'DATA SUKSES TERSIMPAN',
+                        confirmButtonText: 'OK',
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            location.reload()
+                        }
+                    })
+                }
+            });
+        });
+        $('.verifikasi_kegiatan').change(function() {
+            let setiapBaris = $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
+            let id = setiapBaris[0]
+            let verifikasi_kegiatan = $(this).closest('tr').find('select.verifikasi_kegiatan').val();
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('verification.rekat_update') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    id: id,
+                    verifikasi_kegiatan: verifikasi_kegiatan
                 },
                 success: function(data) {
                     console.log(data);

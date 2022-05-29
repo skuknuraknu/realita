@@ -14,8 +14,8 @@ class AddVerifikasiToTbKkTable extends Migration
     public function up()
     {
         Schema::table('tb_kk', function (Blueprint $table) {
-            $table->integer('verifikasi_spi')->nullable();
-            $table->integer('verifikasi_sarpras')->nullable();
+            $table->integer('verifikasi_kegiatan')->nullable();
+            $table->integer('verifikasi_pimpinan')->nullable();
         });
     }
 
@@ -27,8 +27,8 @@ class AddVerifikasiToTbKkTable extends Migration
     public function down()
     {
         Schema::table('tb_kk', function (Blueprint $table) {
-            $table->dropColumn('verifikasi_spi');
-            $table->dropColumn('verifikasi_sarpras');
+            $table->dropColumn('verifikasi_kegiatan');
+            $table->dropColumn('verifikasi_pimpinan');
         });
     }
 }

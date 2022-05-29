@@ -15,6 +15,7 @@ class AddVerifikasiToTbRpk extends Migration
     {
         Schema::table('tb_rpk', function (Blueprint $table) {
             $table->integer('verifikasi_spi')->nullable();
+            $table->integer('verifikasi_kegiatan')->nullable();
             $table->integer('verifikasi_sarpras')->nullable();
         });
     }
@@ -28,6 +29,7 @@ class AddVerifikasiToTbRpk extends Migration
     {
         Schema::table('tb_rpk', function (Blueprint $table) {
             $table->dropColumn('verifikasi_spi');
+            $table->dropColumn('verifikasi_kegiatan');
             $table->dropColumn('verifikasi_sarpras');
         });
     }

@@ -11,6 +11,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Unit Kerja</th>
                                 <th>Kode IK</th>
                                 <th>PK Mentri</th>
                                 <th>TW 1</th>
@@ -19,14 +20,16 @@
                                 <th>TW 4</th>
                                 <th>Jumlah Target</th>
                                 <th>Bobot</th>
-                                <th>Verifikasi SPI</th>
-                                <th>Verifikasi Sarpras</th>
+                                <th>Tahun</th>
+                                <th>Verifikasi Kegiatan</th>
+                                <th>Verifikasi Pimpinan</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $x)
                                 <tr>
                                     <td>{{ $x->id }}</td>
+                                    <td></td>
                                     <td>
                                         {{ $x->kode_ik }}
                                     </td>
@@ -37,14 +40,15 @@
                                     <td>{{ $x->tw_4 }}</td>
                                     <td>{{ $x->tw_1 + $x->tw_2 + $x->tw_3 + $x->tw_4 }}</td>
                                     <td>{{ $x->bobot }}</td>
+                                    <td>{{ $x->created_at->year }}</td>
 
                                     <td>
-                                        <select name="verifikasi_spi"
-                                            class="verifikasi_spi d-inline form-control w-auto required verifikasi">
+                                        <select name="verifikasi_kegiatan"
+                                            class="verifikasi_kegiatan d-inline form-control w-auto required verifikasi">
                                             <option value="" disabled selected>--Setuju/Tolak--</option>
                                             @foreach ($options as $key => $value)
                                             <option value="{{ $key }}"
-                                            @if ($key == $x->verifikasi_spi))
+                                            @if ($key == $x->verifikasi_kegiatan))
                                                 selected="selected"
                                             @endif
                                             >{{ $value }}</option>
@@ -52,12 +56,12 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="verifikasi_sarpras"
-                                            class="verifikasi_sarpras d-inline form-control w-auto required verifikasi">
+                                        <select name="verifikasi_pimpinan"
+                                            class="verifikasi_pimpinan d-inline form-control w-auto required verifikasi">
                                             <option value="" disabled selected>--Setuju/Tolak--</option>
                                             @foreach ($options as $key => $value)
                                             <option value="{{ $key }}"
-                                            @if ($key == $x->verifikasi_sarpras))
+                                            @if ($key == $x->verifikasi_pimpinan))
                                                 selected="selected"
                                             @endif
                                             >{{ $value }}</option>
@@ -76,17 +80,17 @@
 
 @push('scripts')
     <script>
-        $('.verifikasi_spi').change(function() {
+        $('.verifikasi_kegiatan').change(function() {
             let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
             let id = setiapBaris[0]
-            let verifikasi_spi = $(this).closest('tr').find('select.verifikasi_spi').val();
+            let verifikasi_kegiatan = $(this).closest('tr').find('select.verifikasi_kegiatan').val();
             $.ajax({
                 type: 'POST',
                 url: "{{ route('verification.perkin_update') }}",
                 data: {
                     "_token": "{{ csrf_token() }}",
                     id: id,
-                    verifikasi_spi: verifikasi_spi
+                    verifikasi_kegiatan: verifikasi_kegiatan
                 },
                 success: function(data) {
                     console.log(data);
@@ -102,17 +106,17 @@
                 }
             });
         });
-        $('.verifikasi_sarpras').change(function() {
+        $('.verifikasi_pimpinan').change(function() {
             let setiapBaris =  $(this).closest('tr')[0].innerText.split("\t").slice(0, -1)
             let id = setiapBaris[0]
-            let verifikasi_sarpras = $(this).closest('tr').find('select.verifikasi_sarpras').val();
+            let verifikasi_pimpinan = $(this).closest('tr').find('select.verifikasi_pimpinan').val();
             $.ajax({
                 type: 'POST',
                 url: "{{ route('verification.perkin_update') }}",
                 data: {
                     "_token": "{{ csrf_token() }}",
                     id: id,
-                    verifikasi_sarpras: verifikasi_sarpras
+                    verifikasi_pimpinan: verifikasi_pimpinan
                 },
                 success: function(data) {
                     console.log(data);

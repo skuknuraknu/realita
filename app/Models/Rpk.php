@@ -20,6 +20,7 @@ class Rpk extends Model
         "Rencana_Jadwal_Pelaksanaan",
         "tahun",
         'verifikasi_spi',
+        'verifikasi_kegiatan',
         'verifikasi_sarpras'
     ];
 
