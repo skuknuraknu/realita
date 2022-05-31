@@ -8,15 +8,16 @@
 
     <link href="{!! public_path('assets') !!}/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .table-borderless{
+        .table-borderless {
             border-color: transparent;
         }
 
-        body{
+        body {
             letter-spacing: 1px;
             font-family: 'Times New Roman', Times, serif;
             font-size: 12px;
         }
+
     </style>
 </head>
 
@@ -29,7 +30,7 @@
             <div class="col-12">
                 <h2 class="text-center">Perjanjian Kinerja Antara Universitas Syiah Kuala <br> Dengan Pimpinan Unit
                     Kerja
-                </h3>
+                    </h3>
             </div>
         </div>
 
@@ -57,18 +58,23 @@
 
         <div class="row">
             <div class="col-md-12">
-                <table class="table table-bordered border-dark table-responsive align-middle" >
+                <table class="table table-bordered border-dark table-responsive align-middle">
                     <thead>
-                        <th class="text-center align-middle">Sasaran</th>
-                        <th class="text-center align-middle">Kode IK</th>
-                        <th class="text-center align-middle">Indikator Kinerja</th>
-                        <th class="text-center align-middle">Satuan</th>
-                        <th class="text-center align-middle">PK Mentri</th>
-                        <th class="text-center align-middle">TW 1</th>
-                        <th class="text-center align-middle">TW 2</th>
-                        <th class="text-center align-middle">TW 3</th>
-                        <th class="text-center align-middle">TW 4</th>
-                        <th class="text-center align-middle">Bobot</th>
+                        <tr>
+                            <th class="text-center align-middle" rowspan="2">Sasaran</th>
+                            <th class="text-center align-middle" rowspan="2">Kode IK</th>
+                            <th class="text-center align-middle" rowspan="2">Indikator Kinerja</th>
+                            <th class="text-center align-middle" rowspan="2">Satuan</th>
+                            <th class="text-center align-middle" rowspan="2">PK Mentri</th>
+                            <th class="text-center align-middle" colspan="4">Target</th>
+                            <th class="text-center align-middle" rowspan="2">Bobot</th>
+                        </tr>
+                        <tr>
+                            <th class="text-center align-middle">TW 1</th>
+                            <th class="text-center align-middle">TW 2</th>
+                            <th class="text-center align-middle">TW 3</th>
+                            <th class="text-center align-middle">TW 4</th>
+                        </tr>
                     </thead>
                     <tbody>
                         @foreach ($dataPerkin as $key => $perkin)
